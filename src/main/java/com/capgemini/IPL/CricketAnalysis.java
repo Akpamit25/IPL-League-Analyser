@@ -154,4 +154,20 @@ public class CricketAnalysis {
             }
         }
     }
+    public String getWicketsWithBestStrikingRate4wWiseSorted(){
+        if(WicketsList.size()==0 || WicketsList==null)
+            throw new CSVBuilderException("No Census Data", CSVBuilderException.ExceptionType.NO_CENSUS_DATA);
+        Comparator<IPLMostWickets> iplMostWicketsComparator = Comparator.comparing(census -> census.FourWickets);
+        this.sortForWickets(iplMostWicketsComparator);
+        String sortedCensusJson = new Gson().toJson(WicketsList);
+        return sortedCensusJson;
+    }
+    public String getWicketsWithBestStrikingRate5wWiseSorted(){
+        if(WicketsList.size()==0 || WicketsList==null)
+            throw new CSVBuilderException("No Census Data", CSVBuilderException.ExceptionType.NO_CENSUS_DATA);
+        Comparator<IPLMostWickets> iplMostWicketsComparator = Comparator.comparing(census -> census.FiveWickets);
+        this.sortForWickets(iplMostWicketsComparator);
+        String sortedCensusJson = new Gson().toJson(WicketsList);
+        return sortedCensusJson;
+    }
 }

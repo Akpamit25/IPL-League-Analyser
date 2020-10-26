@@ -151,4 +151,28 @@ public class CricketAnalysisTest {
         } catch (Exception e) {
         }
     }
+    @Test
+    public void givenCricketData_WhenSorted_ShouldReturnSortedWithStrikeRate4w() {
+        try {
+            cricketAnalysis.loadDataForWickets(PATH_OF_MOST_WICKETS_CSV_FILE);
+            String sortedCensusData = cricketAnalysis.getWicketsWithBestStrikingRate4wWiseSorted();
+            IPLMostWickets[] censusCsv = new Gson().fromJson(sortedCensusData, IPLMostWickets[].class);
+            String runs = censusCsv[0].FourWickets;
+            String name = censusCsv[0].getPLAYER();
+            Assert.assertEquals("Imran Tahir", name);
+        } catch (Exception e) {
+        }
+    }
+    @Test
+    public void givenCricketData_WhenSorted_ShouldReturnSortedWithStrikeRate5w() {
+        try {
+            cricketAnalysis.loadDataForWickets(PATH_OF_MOST_WICKETS_CSV_FILE);
+            String sortedCensusData = cricketAnalysis.getWicketsWithBestStrikingRate5wWiseSorted();
+            IPLMostWickets[] censusCsv = new Gson().fromJson(sortedCensusData, IPLMostWickets[].class);
+            String runs = censusCsv[0].FiveWickets;
+            String name = censusCsv[0].getPLAYER();
+            Assert.assertEquals("Alzarri Joseph", name);
+        } catch (Exception e) {
+        }
+    }
 }
