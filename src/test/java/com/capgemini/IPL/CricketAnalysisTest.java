@@ -140,4 +140,15 @@ public class CricketAnalysisTest {
         } catch (Exception e) {
         }
     }
+    @Test
+    public void givenCricketData_WhenSorted_ShouldReturnSortedWithBestEconomy() {
+        try {
+            cricketAnalysis.loadDataForWickets(PATH_OF_MOST_WICKETS_CSV_FILE);
+            String sortedCensusData = cricketAnalysis.getBestEconomyWiseSorted();
+            IPLMostWickets[] censusCsv = new Gson().fromJson(sortedCensusData, IPLMostWickets[].class);
+            String name = censusCsv[0].getPLAYER();
+            Assert.assertEquals("Ben Cutting", name);
+        } catch (Exception e) {
+        }
+    }
 }
