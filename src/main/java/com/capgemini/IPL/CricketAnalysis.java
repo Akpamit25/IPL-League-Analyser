@@ -79,4 +79,12 @@ public class CricketAnalysis {
 			}
 		}
 	}
+	  public String get4sn6sWiseSorted()  {
+	        if(censusCSVList.size()==0 || censusCSVList==null)
+	            throw new CSVBuilderException("No Census Data", CSVBuilderException.ExceptionType.NO_CENSUS_DATA);
+	        Comparator<IPLMostRuns> iplMostRunsComparator = Comparator.comparing(census -> census.SR);
+	        this.sort(iplMostRunsComparator);
+	        String sortedCensusJson = new Gson().toJson(censusCSVList);
+	        return sortedCensusJson;
+	    }
 }
