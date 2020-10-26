@@ -199,4 +199,23 @@ public class CricketAnalysisTest {
         } catch (Exception e) {
         }
     }
+    @Test
+    public void givenCricketData_WhenSorted_ShouldReturnBestBowlingAndBattingAvg() {
+        try {
+            cricketAnalysis.loadDataForWickets(PATH_OF_MOST_WICKETS_CSV_FILE);
+            String sortedCensusData = cricketAnalysis.getAverageBowlingWiseSorted();
+            IPLMostWickets[] censusCsv = new Gson().fromJson(sortedCensusData, IPLMostWickets[].class);
+            double runs = censusCsv[0].Avg;
+            String name = censusCsv[0].getPLAYER();
+            Assert.assertEquals("Krishnappa Gowtham", name);
+
+            cricketAnalysis.loadDataForWickets(PATH_OF_MOST_WICKETS_CSV_FILE);
+            String sortedData = cricketAnalysis.getAverageWiseSorted();
+            IPLMostRuns[] censusCsvs = new Gson().fromJson(sortedData, IPLMostRuns[].class);
+            double run = censusCsvs[0].Avg;
+            String names = censusCsvs[0].getPLAYER();
+            Assert.assertEquals("MS Dhoni", names);
+        } catch (Exception e) {
+        }
+    }
 }
