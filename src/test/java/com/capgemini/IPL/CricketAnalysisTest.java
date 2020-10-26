@@ -29,4 +29,17 @@ public class CricketAnalysisTest {
         } catch (Exception e) {
         }
     }
+    
+    @Test
+    public void givenCricketData_WhenSorted_ShouldReturnSortedStrikeRate() {
+        try {
+            cricketAnalysis.loadData(PATH_OF_CSV_FILE);
+            String sortedCensusData = cricketAnalysis.getStrikerateWiseSorted();
+            IPLMostRuns[] censusCsv = new Gson().fromJson(sortedCensusData, IPLMostRuns[].class);
+            double runs = censusCsv[0].SR;
+            String name = censusCsv[0].getPLAYER();
+            Assert.assertEquals("Ishant Sharma", name);
+        } catch (Exception e) {
+        }
+    }
 }
